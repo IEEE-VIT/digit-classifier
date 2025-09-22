@@ -19,6 +19,10 @@ history = model.fit(x_train, y_train, epochs=2, validation_split=0.1)
 test_loss, test_acc = model.evaluate(x_test, y_test)
 print(f"Test accuracy: {test_acc}")
 
+# Automatically save the model after training
+model.save("mnist_model.h5")
+print("Model saved as mnist_model.h5")
+
 # Plot accuracy
 plt.plot(history.history['accuracy'], label='train acc')
 plt.plot(history.history['val_accuracy'], label='val acc')
