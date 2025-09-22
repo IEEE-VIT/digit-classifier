@@ -23,4 +23,5 @@ print(f"Test accuracy: {test_acc}")
 plt.plot(history.history['accuracy'], label='train acc')
 plt.plot(history.history['val_accuracy'], label='val acc')
 plt.legend()
-plt.show()
+plt.savefig('accuracy_graph.png')  # Save the figure as an image file
+# plt.show()  # Optionally display the plot interactively
