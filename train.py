@@ -20,7 +20,16 @@ test_loss, test_acc = model.evaluate(x_test, y_test)
 print(f"Test accuracy: {test_acc}")
 
 # Plot accuracy
-plt.plot(history.history['accuracy'], label='train acc')
-plt.plot(history.history['val_accuracy'], label='val acc')
+plt.figure(figsize=(8, 5))  # optional, makes it larger
+plt.plot(history.history['accuracy'], label='Train Accuracy')
+plt.plot(history.history['val_accuracy'], label='Validation Accuracy')
+plt.xlabel('Epoch')
+plt.ylabel('Accuracy')
+plt.title('Training and Validation Accuracy')
 plt.legend()
+
+# Save the graph to a file before showing
+plt.savefig("accuracy.png", dpi=300)  # saves at high resolution
+
+# Show the graph
 plt.show()
