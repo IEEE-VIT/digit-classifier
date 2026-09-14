@@ -19,8 +19,9 @@ history = model.fit(x_train, y_train, epochs=2, validation_split=0.1)
 test_loss, test_acc = model.evaluate(x_test, y_test)
 print(f"Test accuracy: {test_acc}")
 
+plt.figure(figsize=(8, 10))  # optional, makes it larger
 # Plot accuracy
-plt.figure(figsize=(8, 5))  # optional, makes it larger
+plt.subplot(2, 1, 1)
 plt.plot(history.history['accuracy'], label='Train Accuracy')
 plt.plot(history.history['val_accuracy'], label='Validation Accuracy')
 plt.xlabel('Epoch')
@@ -28,8 +29,20 @@ plt.ylabel('Accuracy')
 plt.title('Training and Validation Accuracy')
 plt.legend()
 
-# Save the graph to a file before showing
-plt.savefig("accuracy.png", dpi=300)  # saves at high resolution
+# Plot loss
+plt.subplot(2, 1, 2)
+plt.plot(history.history['loss'], label='Train Loss')
+plt.plot(history.history['val_loss'], label='Validation Loss')
+plt.xlabel('Epoch')
+plt.ylabel('Loss')
+plt.title('Training and Validation Loss')
+plt.legend()
+
+# Adjust layout
+plt.tight_layout()
+
+# Save the graph
+plt.savefig("accuracy.png", dpi=300)
 
 # Show the graph
 plt.show()
